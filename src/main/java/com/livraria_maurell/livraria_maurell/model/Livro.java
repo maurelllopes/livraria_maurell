@@ -5,7 +5,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-
+//teste
+//teste2
 @Entity
 @Table(name = "livros_spring") // Certifique-se de que o nome da tabela está correto
 public class Livro {
