@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lista de Livros</title>
+    <link rel="stylesheet" type="text/css" href="/css/seu-estilo.css"> <!-- Caminho para o seu CSS -->
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #a5d4df;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ccc;
+            text-align: left;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        a {
+            text-decoration: none;
+            color: #4CAF50;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-4">Lista de Livros</h1>
+        
+        <!-- Campo de Busca -->
+        <div class="search-container mb-3">
+            <input type="text" id="searchInput" class="form-control" placeholder="Buscar por título ou autor" oninput="searchLivros()">
+        </div>
+
+        <table class="table table-bordered mt-3" id="livrosTable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Título</th>
+                    <th>Autor</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="livro : ${livros}">
+                    <td th:text="${livro.id}"></td>
+                    <td th:text="${livro.titulo}"></td>
+                    <td th:text="${livro.autor}"></td>
+                    <td>
+                        <a th:href="@{/livros/editar/{id}(id=${livro.id})}" class="btn btn-primary">Editar</a>
+                        <a th:href="@{/livros/deletar/{id}(id=${livro.id})}" class="btn btn-danger">Deletar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <a th:href="@{/livros/novo}" class="btn btn-success">Adicionar Novo Livro</a>
+    </div>
+
+    <script>
+        function searchLivros() {
+            const searchInput = document.getElementById('searchInput').value;
+
+            fetch(`/livros?search=${searchInput}`)
+                .then(response => response.text())
+                .then(html => {
+                    document.querySelector('#livrosTable tbody').innerHTML = new DOMParser().parseFromString(html, 'text/html').querySelector('tbody').innerHTML;
+                });
+        }
+    </script>
+</body>
+</html>

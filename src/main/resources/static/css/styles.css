@@ -1,0 +1,45 @@
+/* Definindo o fundo azul escuro para toda a página */
+body {
+    background-color: #001f3f; /* Azul escuro */
+    color: #ffffff; /* Texto branco para contraste */
+}
+
+/* Estilizando os elementos de texto */
+h1, h2, h3, h4, h5, h6 {
+    color: #ffffff; /* Cabeçalhos em branco */
+}
+
+a {
+    color: #1abc9c; /* Cor dos links */
+}
+
+a:hover {
+    color: #16a085; /* Cor dos links ao passar o mouse */
+}
+
+/* Estilizando botões */
+button {
+    background-color: #007bff; /* Azul para botões */
+    color: #ffffff; /* Texto dos botões em branco */
+}
+
+button:hover {
+    background-color: #0056b3; /* Azul mais escuro ao passar o mouse */
+}
+
+/* Estilo para tabelas */
+table {
+    width: 100%;
+    border-collapse: collapse; /* Colapsa bordas de tabelas */
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #ffffff; /* Bordas brancas */
+}
+
+th {
+    background-color: #004080; /* Azul escuro para cabeçalho da tabela */
+    color: #ffffff; /* Texto em branco no cabeçalho */
+}

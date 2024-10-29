@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Cadastrar Livro</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #a5d4df;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .form-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+        h2 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Cadastrar Livro</h2>
+        <form action="#" th:action="@{/livros}" method="post" th:object="${livro}">
+            <div class="form-group">
+                <label for="titulo">Título</label>
+                <input type="text" id="titulo" th:field="*{titulo}" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="autor">Autor</label>
+                <input type="text" id="autor" th:field="*{autor}" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="isbn">ISBN</label>
+                <input type="text" id="isbn" th:field="*{isbn}" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-success btn-block">Salvar</button>
+        </form>
+    </div>
+</body>
+</html>
